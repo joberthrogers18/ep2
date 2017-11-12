@@ -50,6 +50,7 @@ public class AcoesInterfaceUCIII implements ActionListener {
 	private GraphPanel harm4;
 	private GraphPanel harm5;
 	private GraphPanel harm6;
+	private GraphPanel g_resul;
 	
 	
 	 public AcoesInterfaceUCIII( JPanel painelUCIII,JFrame tPrincipal,JComboBox num_harm, JTextField txt_amplharm1,
@@ -61,7 +62,7 @@ public class AcoesInterfaceUCIII implements ActionListener {
 			 JTextField txt_angharm6, JTextField txt_ordemh6,JTextField txt_amplfund,
 			 JTextField txt_anglfund, GraphPanel graf_fund, JPanel painel_harm,GraphPanel
 			 harm1,GraphPanel harm2,GraphPanel harm3,GraphPanel harm4,GraphPanel harm5,GraphPanel
-			 harm6) {
+			 harm6, GraphPanel g_resul) {
 		 
 		 this.tPrincipal = tPrincipal;
 		 this.painelUCIII = painelUCIII;
@@ -94,6 +95,7 @@ public class AcoesInterfaceUCIII implements ActionListener {
 		 this.harm4 = harm4;
 		 this.harm5 = harm5;
 		 this.harm6 = harm6;
+		 this.g_resul = g_resul;
 	 }
 	 
 	 public void actionPerformed(ActionEvent e) {
@@ -134,9 +136,10 @@ public class AcoesInterfaceUCIII implements ActionListener {
 				
 				double amplitude_harm1, angulo_harm1, ordem1,amplitude_harm2, angulo_harm2, ordem2,
 				amplitude_harm3, angulo_harm3, ordem3,amplitude_harm4, angulo_harm4, ordem4,
-				amplitude_harm5, angulo_harm5, ordem5,amplitude_harm6, angulo_harm6, ordem6;
+				amplitude_harm5, angulo_harm5, ordem5,amplitude_harm6, angulo_harm6, ordem6, amplitude_ten,angulo_ten;
 				
-
+				amplitude_ten = Double.parseDouble(txt_amplfund.getText());
+	            angulo_ten = Double.parseDouble(txt_anglfund.getText());
 				amplitude_harm1 = Double.parseDouble(txt_amplharm1.getText());
 	            angulo_harm1 = Double.parseDouble(txt_anghar1.getText());
 	            ordem1 = Double.parseDouble(txt_ordemh1.getText());
@@ -238,6 +241,19 @@ public class AcoesInterfaceUCIII implements ActionListener {
 		        graf_harm6.revalidate();
 		        graf_harm6.repaint();
 		        
+		        List<Double> lista_resul = harmonico.FormaOndaResul(amplitude_ten, angulo_ten, amplitude_harm1, 
+		        		angulo_harm1, ordem1,amplitude_harm2, angulo_harm2, ordem2, amplitude_harm3, angulo_harm3 , 
+		        		ordem3, amplitude_harm4, angulo_harm4, ordem4, amplitude_harm5, angulo_harm5, ordem5, 
+		        		amplitude_harm6, angulo_harm6, ordem6);
+		        
+		        GraphPanel graf_resul = new GraphPanel(lista_resul);
+				graf_resul.setBounds(40, 570, 500, 100);
+		        
+				g_resul.setVisible(false);
+		        painelUCIII.add(graf_resul);
+		        
+		        graf_resul.revalidate();
+		        graf_resul.repaint();
 		        
 		        
 			}
