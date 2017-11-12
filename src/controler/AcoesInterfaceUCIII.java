@@ -9,6 +9,7 @@ import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import model.FormaTensao;
@@ -51,6 +52,7 @@ public class AcoesInterfaceUCIII implements ActionListener {
 	private GraphPanel harm5;
 	private GraphPanel harm6;
 	private GraphPanel g_resul;
+	private JTextArea serie;
 	
 	
 	 public AcoesInterfaceUCIII( JPanel painelUCIII,JFrame tPrincipal,JComboBox num_harm, JTextField txt_amplharm1,
@@ -62,7 +64,7 @@ public class AcoesInterfaceUCIII implements ActionListener {
 			 JTextField txt_angharm6, JTextField txt_ordemh6,JTextField txt_amplfund,
 			 JTextField txt_anglfund, GraphPanel graf_fund, JPanel painel_harm,GraphPanel
 			 harm1,GraphPanel harm2,GraphPanel harm3,GraphPanel harm4,GraphPanel harm5,GraphPanel
-			 harm6, GraphPanel g_resul) {
+			 harm6, GraphPanel g_resul,JTextArea serie) {
 		 
 		 this.tPrincipal = tPrincipal;
 		 this.painelUCIII = painelUCIII;
@@ -96,6 +98,7 @@ public class AcoesInterfaceUCIII implements ActionListener {
 		 this.harm5 = harm5;
 		 this.harm6 = harm6;
 		 this.g_resul = g_resul;
+		 this.serie = serie;
 	 }
 	 
 	 public void actionPerformed(ActionEvent e) {
@@ -255,7 +258,13 @@ public class AcoesInterfaceUCIII implements ActionListener {
 		        graf_resul.revalidate();
 		        graf_resul.repaint();
 		        
+		        String serie_f;
+		        serie_f = harmonico.serieFourier(amplitude_ten, angulo_ten, amplitude_harm1, 
+		        		angulo_harm1, ordem1,amplitude_harm2, angulo_harm2, ordem2, amplitude_harm3, angulo_harm3 , 
+		        		ordem3, amplitude_harm4, angulo_harm4, ordem4, amplitude_harm5, angulo_harm5, ordem5, 
+		        		amplitude_harm6, angulo_harm6, ordem6);
 		        
+		        serie.setText(serie_f);
 			}
 			
 			JComboBox nume_har = (JComboBox) e.getSource();
@@ -413,11 +422,6 @@ public class AcoesInterfaceUCIII implements ActionListener {
 			txt_ordemh6.setEnabled(true);
 		
 		}
-			
-		
-
-		
-
 			
 	 }		
 }

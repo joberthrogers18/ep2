@@ -108,7 +108,14 @@ public class UCIII {
 		painel_cfund.add(ok);
 		ok.setActionCommand("ok");
 		
+		JLabel resultante = new JLabel("Resultante");
+		painelUCIII.add(resultante);
+		resultante.setBounds(240, 550, 100, 20);
 	    
+		JLabel serie = new JLabel("Série Fourier Amplitude-Fase");
+		painelUCIII.add(serie);
+		serie.setBounds(840, 550, 250, 20);
+	   
 	    JPanel painel_harmonico = new JPanel();
 		painel_harmonico.setLayout(null);
 		painel_harmonico.setBounds(30, 180, 1230, 350);
@@ -341,20 +348,20 @@ public class UCIII {
 	    voltar.addActionListener(new AcoesInterfaceUCIII(painelUCIII,telaInicial,num_harm, txt_amplitudeh1, txt_anguloh1, txt_ordem1,txt_amplitudeh2, txt_anguloh2, txt_ordem2,
 	    						txt_amplitudeh3, txt_anguloh3, txt_ordem3,txt_amplitudeh4, txt_anguloh4, txt_ordem4,txt_amplitudeh5, txt_anguloh5, txt_ordem5,txt_amplitudeh6,
 	    						txt_anguloh6, txt_ordem6,txtamplitude_tensao,txtangulo_tensao,graf_compfunda,painel_harmonico, graf_harmonico1,graf_harmonico2,graf_harmonico3,
-	    						graf_harmonico4,graf_harmonico5,graf_harmonico6,graf_resultante));
+	    						graf_harmonico4,graf_harmonico5,graf_harmonico6,graf_resultante,serie_fourrier));
 	    num_harm.addActionListener(new AcoesInterfaceUCIII(painelUCIII,telaInicial,num_harm, txt_amplitudeh1, txt_anguloh1, txt_ordem1,txt_amplitudeh2, txt_anguloh2, txt_ordem2,
 				txt_amplitudeh3, txt_anguloh3, txt_ordem3,txt_amplitudeh4, txt_anguloh4, txt_ordem4,txt_amplitudeh5, txt_anguloh5, txt_ordem5,txt_amplitudeh6,
 				txt_anguloh6, txt_ordem6,txtamplitude_tensao,txtangulo_tensao,graf_compfunda,painel_harmonico, graf_harmonico1,graf_harmonico2,graf_harmonico3,
-				graf_harmonico4,graf_harmonico5,graf_harmonico6,graf_resultante));
+				graf_harmonico4,graf_harmonico5,graf_harmonico6,graf_resultante,serie_fourrier));
 	    ok.addActionListener(new AcoesInterfaceUCIII(painelUCIII,telaInicial,num_harm, txt_amplitudeh1, txt_anguloh1, txt_ordem1,txt_amplitudeh2, txt_anguloh2, txt_ordem2,
 				txt_amplitudeh3, txt_anguloh3, txt_ordem3,txt_amplitudeh4, txt_anguloh4, txt_ordem4,txt_amplitudeh5, txt_anguloh5, txt_ordem5,txt_amplitudeh6,
 				txt_anguloh6, txt_ordem6,txtamplitude_tensao,txtangulo_tensao,graf_compfunda,painel_harmonico, graf_harmonico1,graf_harmonico2,graf_harmonico3,
-				graf_harmonico4,graf_harmonico5,graf_harmonico6,graf_resultante));
+				graf_harmonico4,graf_harmonico5,graf_harmonico6,graf_resultante,serie_fourrier));
 		
 	    ok2.addActionListener(new AcoesInterfaceUCIII(painelUCIII,telaInicial,num_harm, txt_amplitudeh1, txt_anguloh1, txt_ordem1,txt_amplitudeh2, txt_anguloh2, txt_ordem2,
 				txt_amplitudeh3, txt_anguloh3, txt_ordem3,txt_amplitudeh4, txt_anguloh4, txt_ordem4,txt_amplitudeh5, txt_anguloh5, txt_ordem5,txt_amplitudeh6,
 				txt_anguloh6, txt_ordem6,txtamplitude_tensao,txtangulo_tensao,graf_compfunda,painel_harmonico, graf_harmonico1,graf_harmonico2,graf_harmonico3,
-				graf_harmonico4,graf_harmonico5,graf_harmonico6,graf_resultante));
+				graf_harmonico4,graf_harmonico5,graf_harmonico6,graf_resultante,serie_fourrier));
 		
 	    
 	    telaInicial.add(painelUCIII);
