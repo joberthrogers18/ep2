@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import view.UCII;
 import view.UCIII;
+import view.UCIV;
 
 public class AcoeInterfacePrincipal  implements ActionListener{
 	
@@ -43,6 +44,15 @@ public class AcoeInterfacePrincipal  implements ActionListener{
 			System.out.println("Não foi possivel criar o frame\n");
 		}
    }
+   else if(comando.equals("simulacao3")){
+		painelInicial.setVisible(false);
+		try {
+			new UCIV(telaInicial);
+			
+		} catch (IOException e1) {
+			System.out.println("Não foi possivel criar o frame\n");
+		}
+  }
 	
 }
 
