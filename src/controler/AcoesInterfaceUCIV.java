@@ -11,10 +11,10 @@ import javax.swing.JTextField;
 
 import model.FormaCorrente;
 import model.FormaTensao;
+import model.Harmonicos;
 import model.Potencias;
 import view.GraphPanel;
 import view.InterfacePrincipal;
-import view.TrianguloPoten;
 
 public class AcoesInterfaceUCIV implements ActionListener{
 	private JPanel painelUCII;
@@ -22,6 +22,7 @@ public class AcoesInterfaceUCIV implements ActionListener{
 	public JTextField txtamplitude_tensao;
 	private JTextField txtangulo_tensao;
 	FormaTensao tensao = new FormaTensao();
+	Harmonicos harmonico = new Harmonicos();
 	private GraphPanel graficotensao;
 	public JTextField txtamplitude_corrente;
 	private JTextField txtangulo_corrente;
@@ -33,11 +34,11 @@ public class AcoesInterfaceUCIV implements ActionListener{
 	private JTextField txtpotenciaReativa;
 	private JTextField txtpotenciaAparente;
 	private JTextField txtfatorPotencia;
+	private JTextField ordemharm;
 	// Associações
 	
 	public AcoesInterfaceUCIV(JPanel painelUCII,JFrame telaInicial,JTextField txtamplitude_tensao,JTextField txtangulo_tensao, GraphPanel grafico_tensao
-			,JTextField txtamplitude_corrente,JTextField txtangulo_corrente, GraphPanel grafico_corrente, GraphPanel grafico_poteninst, JTextField potenAtiva
-			,JTextField txtpoten_reativa, JTextField txtpoten_aparente, JTextField txtfator_poten) throws IOException{
+			,JTextField txtamplitude_corrente,JTextField txtangulo_corrente, GraphPanel grafico_corrente, GraphPanel grafico_poteninst,JTextField ordemharm) throws IOException{
 		this.painelUCII=painelUCII;
 		this.telaInicial=telaInicial;
 		this.txtamplitude_tensao =txtamplitude_tensao;
@@ -47,10 +48,7 @@ public class AcoesInterfaceUCIV implements ActionListener{
 		this.txtangulo_corrente = txtangulo_corrente;
 		this.graficocorrente = grafico_corrente;
 		this.graficopotinst = grafico_poteninst;
-		this.txtpotenciaAtiva = potenAtiva;
-		this.txtpotenciaReativa = txtpoten_reativa;
-		this.txtpotenciaAparente = txtpoten_aparente;
-		this.txtfatorPotencia = txtfator_poten;
+		this.ordemharm = ordemharm;
 		
 	}
 	
@@ -91,12 +89,13 @@ public class AcoesInterfaceUCIV implements ActionListener{
 						
 		}
 		else if(comando.equals("ok2")) {
-			double amplitude_cor, angulo_cor;
+			double amplitude_cor,angulo_cor,ordemh;
 			
 			 amplitude_cor = Double.parseDouble(txtamplitude_corrente.getText());
              angulo_cor = Double.parseDouble(txtangulo_corrente.getText());
-             List<Double> lista = graf_corrente.formaGrafico(amplitude_cor, angulo_cor);
+             ordemh = Double.parseDouble(ordemharm.getText());
              
+             List<Double> lista = harmonico.FormaOnda(amplitude_cor, angulo_cor, ordemh);            
              
 			GraphPanel grafico_corrente = new GraphPanel(lista);
 			grafico_corrente.setBounds(-20, 240, 650, 150);
@@ -110,25 +109,17 @@ public class AcoesInterfaceUCIV implements ActionListener{
 			
 		}
 		else if(comando.equals("ok3")) {
-			double amplitude_cor, angulo_cor,amplitude_ten, angulo_ten;
-			int v_potenativa = 0, v_potereativa = 0;
-	        
+			double amplitude_cor, angulo_cor,amplitude_ten, angulo_ten, ordemh;
+		    
 
 			 amplitude_ten = Double.parseDouble(txtamplitude_tensao.getText());
              angulo_ten = Double.parseDouble(txtangulo_tensao.getText());
 			 amplitude_cor = Double.parseDouble(txtamplitude_corrente.getText());
              angulo_cor = Double.parseDouble(txtangulo_corrente.getText());
+             ordemh = Double.parseDouble(ordemharm.getText());
+                  
              
-             txtpotenciaAtiva.setText(String.valueOf(Math.round(pot_intantanea.Pativa(amplitude_ten, amplitude_cor, angulo_ten, angulo_cor))+ "     Watts"));
-             txtpotenciaReativa.setText(String.valueOf(Math.round(pot_intantanea.Preativa(amplitude_ten, amplitude_cor, angulo_ten, angulo_cor))+ "     VAR"));
-             txtpotenciaAparente.setText(String.valueOf(Math.round(pot_intantanea.Paparente(amplitude_ten, amplitude_cor)) + "     VA"));
-             txtfatorPotencia.setText(String.valueOf(pot_intantanea.FatorPotencia(angulo_ten, angulo_cor)));
-             
-             v_potenativa = (int) pot_intantanea.Pativa(amplitude_ten, amplitude_cor, angulo_ten, angulo_cor);
-             v_potereativa = (int) pot_intantanea.Preativa(amplitude_ten, amplitude_cor, angulo_ten, angulo_cor);
-             
-             
-             List<Double> lista = pot_intantanea.FormaOndaPotenciaIns(amplitude_ten, angulo_ten, amplitude_cor, angulo_cor);
+             List<Double> lista = harmonico.potenciaInstharm(amplitude_ten, angulo_ten, amplitude_cor, angulo_cor, ordemh);
              
  			graficopotinst.setVisible(false); 
 			GraphPanel grafico_potenciainst = new GraphPanel(lista);

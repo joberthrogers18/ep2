@@ -5,14 +5,27 @@ import java.util.List;
 
 public class Harmonicos {
 	private List<Double> lista = new ArrayList<>();
+	FormaTensao tensao = new FormaTensao();
 	
 	
 	public List<Double> FormaOnda(double amplitude, double angulo, double ordem) {
 		
-		for (float i = 0; i < 10; i = (float) (i + 0.4)) {
+		for (float i = 0; i < 100; i = (float) (i + 0.4)) {
 	           
 			lista.add(amplitude * Math.cos(ordem*120*3.14*i + angulo));
         }
+		return lista;
+	}
+	
+	public List<Double> potenciaInstharm(double amplitude_ten, double angulo_ten,double amplitude_cor, double angulo_cor, double ordem) {
+		List<Double> listacorrete = tensao.formaGrafico(amplitude_ten, angulo_ten);
+		int j = 0;
+				
+		for (float i = 0; i < 100; i = (float) (i + 0.4)) {
+	          
+			lista.add(listacorrete.get(j)*amplitude_cor * Math.cos(ordem*120*3.14*i + angulo_cor));
+			j++;
+		}
 		return lista;
 	}
 	

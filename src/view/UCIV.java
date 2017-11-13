@@ -18,12 +18,12 @@ public class UCIV {
 	public GraphPanel graf_tensao;
 	private GraphPanel graf_corrente;
 	private GraphPanel graf_poten_inst;
-	private TrianguloPoten triangulo_potencia;
-	public JTextField txtamplitude_tensao;
+	private JTextField txtordem_harm;
+	private JTextField txtamplitude_tensao;
 	private JTextField txtangulo_tensao;
 	private JTextField txtamplitude_corrente;
 	private JTextField txtangulo_corrente;
-	private JTextField txtpoten_ativa;
+	private JTextField txtpoten_liq;
 	private JTextField txtpoten_reativa;
 	private JTextField txtpoten_aparente;
 	private JTextField txtfator_poten;
@@ -63,20 +63,24 @@ public class UCIV {
 		
 		
 		txtamplitude_tensao = new JTextField("0");
-		txtamplitude_tensao.setBounds(40, 86, 170, 20);
+		txtamplitude_tensao.setBounds(40, 86, 100, 20);
 		txtamplitude_tensao.setColumns(10);
 		
 		txtangulo_tensao = new JTextField("0");
-		txtangulo_tensao.setBounds(230, 86, 170, 20);
+		txtangulo_tensao.setBounds(230, 86, 100, 20);
 		txtangulo_tensao.setColumns(10);
 		
 		txtamplitude_corrente = new JTextField("0");
-		txtamplitude_corrente.setBounds(40, 86, 170, 20);
+		txtamplitude_corrente.setBounds(40, 86, 100, 20);
 		txtamplitude_corrente.setColumns(10);
 		
 		txtangulo_corrente = new JTextField("0");
-		txtangulo_corrente.setBounds(230, 86, 170, 20);
+		txtangulo_corrente.setBounds(180, 86, 100, 20);
 		txtangulo_corrente.setColumns(10);
+		
+
+		txtordem_harm = new JTextField("0");
+		txtordem_harm.setBounds(340, 86, 100, 20);
 		
 		JButton voltar = new JButton("Voltar");
 		voltar.setBounds(1000,10,100,30);
@@ -106,11 +110,14 @@ public class UCIV {
 		JLabel angulo_tensao_label = new JLabel("Ângulo de fase: ");
 		angulo_tensao_label.setBounds(230, 50, 170, 20);
 		
-		JLabel ampli_corrente_label = new JLabel("Amplitude da corrente:");
-		ampli_corrente_label.setBounds(40, 50, 170, 20);
+		JLabel ampli_corrente_label = new JLabel("Ampli. da corrente:");
+		ampli_corrente_label.setBounds(20, 50, 170, 20);
 		
 		JLabel angulo_corrente_label = new JLabel("Ângulo de fase: ");
-		angulo_corrente_label.setBounds(230, 50, 170, 20);
+		angulo_corrente_label.setBounds(170, 50, 170, 20);
+		
+		JLabel l_ordemharm = new JLabel("Ordem Harmonica: ");
+		l_ordemharm.setBounds(320, 50, 170, 20);
 		
 		JPanel painel_tensao = new JPanel();
 		painel_tensao.setLayout(null);
@@ -135,60 +142,53 @@ public class UCIV {
 	    panel_corrente.setBorder(javax.swing.BorderFactory.createTitledBorder("CORRENTE"));
 	    panel_corrente.add(txtamplitude_corrente);
 	    panel_corrente.add(txtangulo_corrente);
+	    panel_corrente.add(txtordem_harm);
 	    panel_corrente.add(ampli_corrente_label);
 	    panel_corrente.add(angulo_corrente_label);
+	    panel_corrente.add(l_ordemharm);
 
 	    JButton ok2 = new JButton("OK");
-	    ok2.setBounds(450, 86, 70, 20);
+	    ok2.setBounds(500, 86, 70, 20);
 	    ok2.setActionCommand("ok2");
 	    panel_corrente.add(ok2);
 	    
-	    JLabel poten_ativa_label = new JLabel("Potência Ativa: ");
-		poten_ativa_label.setBounds(25, 600, 170, 40);
-		painelUCII.add(poten_ativa_label);
+	    JLabel poten_liq_label = new JLabel("Potência líquida: ");
+		poten_liq_label.setBounds(900, 450, 170, 40);
+		painelUCII.add(poten_liq_label);
 		
-		txtpoten_ativa = new JTextField("0");
-		txtpoten_ativa.setBounds(160, 610, 140, 20);
-		txtpoten_ativa.setColumns(10);
-		painelUCII.add(txtpoten_ativa);
+		txtpoten_liq = new JTextField("0");
+		txtpoten_liq.setBounds(1025, 460, 140, 20);
+		txtpoten_liq.setColumns(10);
+		painelUCII.add(txtpoten_liq);
 		
 		JLabel poten_reativa_label = new JLabel("Potencia reativa:");
-		poten_reativa_label.setBounds(25,640 ,170, 40);
+		poten_reativa_label.setBounds(900,515 ,170, 40);
 		painelUCII.add(poten_reativa_label);
 		
 		txtpoten_reativa = new JTextField("0");
-		txtpoten_reativa.setBounds(160, 650, 140, 20);
+		txtpoten_reativa.setBounds(1025, 525, 140, 20);
 		txtpoten_reativa.setColumns(10);
 		painelUCII.add(txtpoten_reativa);
 		
 		JLabel poten_aparente_label = new JLabel("Potência Aparente: ");
-		poten_aparente_label.setBounds(320, 600, 170, 40);
+		poten_aparente_label.setBounds(900, 580, 170, 40);
 		painelUCII.add(poten_aparente_label);
 		
 
 		txtpoten_aparente = new JTextField("0");
-		txtpoten_aparente.setBounds(475, 610, 140, 20);
+		txtpoten_aparente.setBounds(1025, 590, 140, 20);
 		txtpoten_aparente.setColumns(10);
 		painelUCII.add(txtpoten_aparente);
 		
-		JLabel fatot_poten_label = new JLabel("Fator de Potência: ");
-		fatot_poten_label.setBounds(320,640 , 170, 40);
-		painelUCII.add(fatot_poten_label);
 		
-
-		txtfator_poten = new JTextField("0");
-		txtfator_poten.setBounds(475,650 , 140, 20);
-		txtfator_poten.setColumns(10);
-		painelUCII.add(txtfator_poten);
-	    
 		voltar.addActionListener( new AcoesInterfaceUCIV(painelUCII,telaInicial,txtamplitude_tensao,txtangulo_tensao, graf_tensao,
-				txtamplitude_corrente,txtangulo_corrente, graf_corrente, graf_poten_inst,txtpoten_ativa, txtpoten_reativa,txtpoten_aparente,txtfator_poten));
+				txtamplitude_corrente,txtangulo_corrente, graf_corrente, graf_poten_inst, txtordem_harm));
 		ok.addActionListener(new AcoesInterfaceUCIV(painelUCII,telaInicial,txtamplitude_tensao,txtangulo_tensao, graf_tensao
-				,txtamplitude_corrente,txtangulo_corrente, graf_corrente,graf_poten_inst,txtpoten_ativa,txtpoten_reativa,txtpoten_aparente,txtfator_poten));
+				,txtamplitude_corrente,txtangulo_corrente, graf_corrente,graf_poten_inst, txtordem_harm));
 		ok2.addActionListener(new AcoesInterfaceUCIV(painelUCII,telaInicial,txtamplitude_tensao,txtangulo_tensao
-				, graf_tensao,txtamplitude_corrente,txtangulo_corrente, graf_corrente,graf_poten_inst,txtpoten_ativa,txtpoten_reativa,txtpoten_aparente,txtfator_poten));
+				, graf_tensao,txtamplitude_corrente,txtangulo_corrente, graf_corrente,graf_poten_inst,txtordem_harm));
 		ok3.addActionListener(new AcoesInterfaceUCIV(painelUCII,telaInicial,txtamplitude_tensao,txtangulo_tensao, graf_tensao
-				,txtamplitude_corrente,txtangulo_corrente, graf_corrente,graf_poten_inst,txtpoten_ativa,txtpoten_reativa,txtpoten_aparente,txtfator_poten));
+				,txtamplitude_corrente,txtangulo_corrente, graf_corrente,graf_poten_inst,txtordem_harm));
 		
 		telaInicial.add(painelUCII);
 		painelUCII.setVisible(true);
