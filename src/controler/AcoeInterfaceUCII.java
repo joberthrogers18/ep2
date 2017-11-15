@@ -89,7 +89,7 @@ public class AcoeInterfaceUCII  implements ActionListener {
              List<Double> lista = tensao.formaGrafico(amplitude_ten, angulo_ten);
              
 			GraphPanel grafico_tensao = new GraphPanel(lista);
-			grafico_tensao.setBounds(-20, 70, 650, 150);
+			grafico_tensao.setBounds(20, 90, 600, 120);
 	        
 	        graficotensao.setVisible(false);
 	        painelUCII.add(grafico_tensao);
@@ -107,7 +107,7 @@ public class AcoeInterfaceUCII  implements ActionListener {
              
              
 			GraphPanel grafico_corrente = new GraphPanel(lista);
-			grafico_corrente.setBounds(-20, 240, 650, 150);
+			grafico_corrente.setBounds(20, 240, 600, 120);
 	        
 	        graficocorrente.setVisible(false);
 	        painelUCII.add(grafico_corrente);
@@ -140,7 +140,7 @@ public class AcoeInterfaceUCII  implements ActionListener {
              
  			graficopotinst.setVisible(false); 
 			GraphPanel grafico_potenciainst = new GraphPanel(lista);
-			grafico_potenciainst.setBounds(-20, 430, 650, 150);
+			grafico_potenciainst.setBounds(20, 430, 600, 120);
 			painelUCII.add(grafico_potenciainst);
 	       
 	        
@@ -150,7 +150,7 @@ public class AcoeInterfaceUCII  implements ActionListener {
 	        
 	      triangulo.setVisible(false);
 	      TrianguloPoten triangulo = new TrianguloPoten(v_potenativa,v_potereativa);
-	      triangulo.setBounds(680, 400, 420,300);
+	      triangulo.setBounds(680, 400, 650, 500);
 	        
 	      painelUCII.add(triangulo);
 	        

@@ -30,11 +30,14 @@ public InterfacePrincipal(JFrame telaInicial) throws IOException{
 	 */
 	public void CriarInterfacePrincipal(JFrame telaInicial) throws IOException{
 		
-		JButton UCII = new JButton("Simulação1");
+		JButton UCII = new JButton("Simulação 1");
 		UCII.setBounds(190,100,400,30);
 		
-		JButton UCIII = new JButton("Simulação2");
+		JButton UCIII = new JButton("Simulação 2");
 		UCIII.setBounds(190,200,400,30);
+		
+		JButton UCIV = new JButton("Simulação 3");
+		UCIV.setBounds(190,300,400,30);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 500);
@@ -45,11 +48,14 @@ public InterfacePrincipal(JFrame telaInicial) throws IOException{
 		
 		UCII.setActionCommand("simulacao1");
 		UCIII.setActionCommand("simulacao2");
+		UCIV.setActionCommand("simulacao3");
 		UCII.addActionListener(new AcoeInterfacePrincipal(Painelmain,telaInicial));;
 		UCIII.addActionListener(new AcoeInterfacePrincipal(Painelmain,telaInicial));;
+		UCIV.addActionListener(new AcoeInterfacePrincipal(Painelmain,telaInicial));;
 		telaInicial.add(Painelmain);
 		Painelmain.add(UCII);
 		Painelmain.add(UCIII);
+		Painelmain.add(UCIV);
 		
 		telaInicial.setVisible(true);
 		

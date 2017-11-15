@@ -56,25 +56,37 @@ public class UCII {
 		input.setBounds(25, 40, 170, 40);
 		painelUCII.add(input);
 		
+
+		JLabel tensao_l = new JLabel("TENSÂO:");
+		tensao_l.setBounds(250, 50, 170, 40);
+		painelUCII.add(tensao_l);
+
+		JLabel cor_l = new JLabel("CORRENTE:");
+		cor_l.setBounds(250, 210, 170, 40);
+		painelUCII.add(cor_l);
+		
 		JLabel output = new JLabel("SAIDAS: ");
 		output.setBounds(25, 390, 170, 20);
 		painelUCII.add(output);
 		
-		
-		
-		txtamplitude_tensao = new JTextField();
+/*
+		JLabel cor_l = new JLabel("POTÊNCIA:");
+		cor_l.setBounds(250, 210, 170, 40);
+		painelUCII.add(cor_l);
+		*/
+		txtamplitude_tensao = new JTextField("0");
 		txtamplitude_tensao.setBounds(40, 86, 170, 20);
 		txtamplitude_tensao.setColumns(10);
 		
-		txtangulo_tensao = new JTextField();
+		txtangulo_tensao = new JTextField("0");
 		txtangulo_tensao.setBounds(230, 86, 170, 20);
 		txtangulo_tensao.setColumns(10);
 		
-		txtamplitude_corrente = new JTextField();
+		txtamplitude_corrente = new JTextField("0");
 		txtamplitude_corrente.setBounds(40, 86, 170, 20);
 		txtamplitude_corrente.setColumns(10);
 		
-		txtangulo_corrente = new JTextField();
+		txtangulo_corrente = new JTextField("0");
 		txtangulo_corrente.setBounds(230, 86, 170, 20);
 		txtangulo_corrente.setColumns(10);
 		
@@ -89,11 +101,11 @@ public class UCII {
 		ok3.setActionCommand("ok3");
 		
 		graf_tensao = new GraphPanel(v_tensao);
-		graf_tensao.setBounds(-20, 70, 650, 150);
+		graf_tensao.setBounds(20, 90, 600, 120);
 		graf_corrente = new GraphPanel(v_corrente);
-		graf_corrente.setBounds(-20, 240, 650, 150);
+		graf_corrente.setBounds(20, 240, 600, 120);
 		graf_poten_inst = new GraphPanel(v_poInstan);
-		graf_poten_inst.setBounds(-20, 430, 650, 150);
+		graf_poten_inst.setBounds(20, 430, 600, 120);
 		triangulo_potencia = new TrianguloPoten(0,0);
 		triangulo_potencia.setBounds(680, 400, 650, 500);
 		
@@ -117,7 +129,7 @@ public class UCII {
 		
 		JPanel painel_tensao = new JPanel();
 		painel_tensao.setLayout(null);
-		painel_tensao.setBounds(700, 50, 598, 140);
+		painel_tensao.setBounds(700, 70, 598, 140);
 		painelUCII.add(painel_tensao);
 	    painel_tensao.setBorder(javax.swing.BorderFactory.createTitledBorder("TENSÃO"));
 	    painel_tensao.add(txtamplitude_tensao);
@@ -150,7 +162,7 @@ public class UCII {
 		poten_ativa_label.setBounds(25, 600, 170, 40);
 		painelUCII.add(poten_ativa_label);
 		
-		txtpoten_ativa = new JTextField();
+		txtpoten_ativa = new JTextField("0");
 		txtpoten_ativa.setBounds(160, 610, 140, 20);
 		txtpoten_ativa.setColumns(10);
 		painelUCII.add(txtpoten_ativa);
@@ -159,7 +171,7 @@ public class UCII {
 		poten_reativa_label.setBounds(25,640 ,170, 40);
 		painelUCII.add(poten_reativa_label);
 		
-		txtpoten_reativa = new JTextField();
+		txtpoten_reativa = new JTextField("0");
 		txtpoten_reativa.setBounds(160, 650, 140, 20);
 		txtpoten_reativa.setColumns(10);
 		painelUCII.add(txtpoten_reativa);
@@ -169,7 +181,7 @@ public class UCII {
 		painelUCII.add(poten_aparente_label);
 		
 
-		txtpoten_aparente = new JTextField();
+		txtpoten_aparente = new JTextField("0");
 		txtpoten_aparente.setBounds(475, 610, 140, 20);
 		txtpoten_aparente.setColumns(10);
 		painelUCII.add(txtpoten_aparente);
@@ -179,7 +191,7 @@ public class UCII {
 		painelUCII.add(fatot_poten_label);
 		
 
-		txtfator_poten = new JTextField();
+		txtfator_poten = new JTextField("0");
 		txtfator_poten.setBounds(475,650 , 140, 20);
 		txtfator_poten.setColumns(10);
 		painelUCII.add(txtfator_poten);

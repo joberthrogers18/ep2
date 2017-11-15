@@ -23,6 +23,7 @@ public class AcoesInterfaceUCIV implements ActionListener{
 	private JTextField txtangulo_tensao;
 	FormaTensao tensao = new FormaTensao();
 	Harmonicos harmonico = new Harmonicos();
+	Potencias potencia = new Potencias();
 	private GraphPanel graficotensao;
 	public JTextField txtamplitude_corrente;
 	private JTextField txtangulo_corrente;
@@ -30,15 +31,13 @@ public class AcoesInterfaceUCIV implements ActionListener{
 	Potencias pot_intantanea = new Potencias();
 	private GraphPanel graficocorrente;
 	private GraphPanel graficopotinst;
-	private JTextField txtpotenciaAtiva;
-	private JTextField txtpotenciaReativa;
-	private JTextField txtpotenciaAparente;
-	private JTextField txtfatorPotencia;
 	private JTextField ordemharm;
+	private JTextField poten_d;
 	// Associações
 	
 	public AcoesInterfaceUCIV(JPanel painelUCII,JFrame telaInicial,JTextField txtamplitude_tensao,JTextField txtangulo_tensao, GraphPanel grafico_tensao
-			,JTextField txtamplitude_corrente,JTextField txtangulo_corrente, GraphPanel grafico_corrente, GraphPanel grafico_poteninst,JTextField ordemharm) throws IOException{
+			,JTextField txtamplitude_corrente,JTextField txtangulo_corrente, GraphPanel grafico_corrente, GraphPanel grafico_poteninst,JTextField ordemharm,
+			JTextField poten_d) throws IOException{
 		this.painelUCII=painelUCII;
 		this.telaInicial=telaInicial;
 		this.txtamplitude_tensao =txtamplitude_tensao;
@@ -49,6 +48,7 @@ public class AcoesInterfaceUCIV implements ActionListener{
 		this.graficocorrente = grafico_corrente;
 		this.graficopotinst = grafico_poteninst;
 		this.ordemharm = ordemharm;
+		this.poten_d = poten_d;
 		
 	}
 	
@@ -79,7 +79,7 @@ public class AcoesInterfaceUCIV implements ActionListener{
              List<Double> lista = tensao.formaGrafico(amplitude_ten, angulo_ten);
              
 			GraphPanel grafico_tensao = new GraphPanel(lista);
-			grafico_tensao.setBounds(-20, 70, 650, 150);
+			grafico_tensao.setBounds(20, 90, 600, 120);
 	        
 	        graficotensao.setVisible(false);
 	        painelUCII.add(grafico_tensao);
@@ -98,7 +98,7 @@ public class AcoesInterfaceUCIV implements ActionListener{
              List<Double> lista = harmonico.FormaOnda(amplitude_cor, angulo_cor, ordemh);            
              
 			GraphPanel grafico_corrente = new GraphPanel(lista);
-			grafico_corrente.setBounds(-20, 240, 650, 150);
+			grafico_corrente.setBounds(20, 240, 600, 120);
 	        
 	        graficocorrente.setVisible(false);
 	        painelUCII.add(grafico_corrente);
@@ -110,7 +110,7 @@ public class AcoesInterfaceUCIV implements ActionListener{
 		}
 		else if(comando.equals("ok3")) {
 			double amplitude_cor, angulo_cor,amplitude_ten, angulo_ten, ordemh;
-		    
+		    int poten_dist;
 
 			 amplitude_ten = Double.parseDouble(txtamplitude_tensao.getText());
              angulo_ten = Double.parseDouble(txtangulo_tensao.getText());
@@ -118,12 +118,15 @@ public class AcoesInterfaceUCIV implements ActionListener{
              angulo_cor = Double.parseDouble(txtangulo_corrente.getText());
              ordemh = Double.parseDouble(ordemharm.getText());
                   
+             poten_dist = (int) potencia.Paparente(amplitude_ten, amplitude_cor);
+             
+             poten_d .setText(poten_dist + "    voltAmpere");
              
              List<Double> lista = harmonico.potenciaInstharm(amplitude_ten, angulo_ten, amplitude_cor, angulo_cor, ordemh);
              
  			graficopotinst.setVisible(false); 
 			GraphPanel grafico_potenciainst = new GraphPanel(lista);
-			grafico_potenciainst.setBounds(-20, 430, 650, 150);
+			grafico_potenciainst.setBounds(20, 430, 600, 120);
 			painelUCII.add(grafico_potenciainst);
 	       
 	        
