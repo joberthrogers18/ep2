@@ -162,24 +162,10 @@ public class AcoesInterfaceUCIII implements ActionListener {
 				angulo_harm6 = Double.parseDouble(txt_anghar6.getText());
 				ordem6 = Double.parseDouble(txt_ordemh6.getText());
 	            
-				List<Double> listahar1 = new ArrayList<>();
-				List<Double> listahar2 = new ArrayList<>();
-				List<Double> listahar3 = new ArrayList<>();
-				List<Double> listahar4 = new ArrayList<>();				
-				List<Double> listahar5 = new ArrayList<>();
-				List<Double> listahar6 = new ArrayList<>();
-				//List<Double> listahar1 = harmonico.FormaOnda(amplitude_harm1, angulo_harm1, ordem1);
+				List<Double> listahar1 = harmonico.FormaOnda(amplitude_harm1, angulo_harm1, ordem1);
 				
-				//List<Double> listahar2 = harmonico.FormaOnda2(amplitude_harm2, angulo_harm2, ordem2);
-				for (float i = 0; i < 100; i = (float) (i + 0.4)) {
-			           
-					listahar1.add(amplitude_harm1 * Math.cos(ordem1*120*3.14*i + angulo_harm1));
-					listahar2.add(amplitude_harm2 * Math.cos(ordem2*120*3.14*i + angulo_harm2));
-					listahar3.add(amplitude_harm3 * Math.cos(ordem3*120*3.14*i + angulo_harm3));
-					listahar4.add(amplitude_harm4 * Math.cos(ordem4*120*3.14*i + angulo_harm4));
-					listahar5.add(amplitude_harm5 * Math.cos(ordem5*120*3.14*i + angulo_harm5));
-					listahar6.add(amplitude_harm6 * Math.cos(ordem6*120*3.14*i + angulo_harm6));
-		        }
+				List<Double> listahar2 = harmonico.FormaOnda(amplitude_harm2, angulo_harm2, ordem2);
+				
 		
 				GraphPanel graf_harm1 = new GraphPanel(listahar1);
 				graf_harm1.setBounds(60, 90, 330, 90);
@@ -200,7 +186,7 @@ public class AcoesInterfaceUCIII implements ActionListener {
 		        graf_harm2.revalidate();
 		        graf_harm2.repaint();
 		       
-		        //List<Double> listahar3 = harmonico.FormaOnda3(amplitude_harm3, angulo_harm3, ordem3);
+		        List<Double> listahar3 = harmonico.FormaOnda(amplitude_harm3, angulo_harm3, ordem3);
 	             
 				GraphPanel graf_harm3 = new GraphPanel(listahar3);
 				graf_harm3.setBounds(480, 90, 330, 90);
@@ -211,7 +197,7 @@ public class AcoesInterfaceUCIII implements ActionListener {
 		        graf_harm3.revalidate();
 		        graf_harm3.repaint();
 		        
-		        //List<Double> listahar4 = harmonico.FormaOnda4(amplitude_harm4, angulo_harm4, ordem4);
+		        List<Double> listahar4 = harmonico.FormaOnda(amplitude_harm4, angulo_harm4, ordem4);
 	             
 				GraphPanel graf_harm4 = new GraphPanel(listahar4);
 				graf_harm4.setBounds(480, 240, 330, 90);
@@ -222,7 +208,7 @@ public class AcoesInterfaceUCIII implements ActionListener {
 		        graf_harm4.revalidate();
 		        graf_harm4.repaint();
 		        
-		        //List<Double> listahar5 = harmonico.FormaOnda5(amplitude_harm5, angulo_harm5, ordem5);
+		        List<Double> listahar5 = harmonico.FormaOnda(amplitude_harm5, angulo_harm5, ordem5);
 	             
 				GraphPanel graf_harm5 = new GraphPanel(listahar5);
 				graf_harm5.setBounds(890, 90, 330, 90);
@@ -233,7 +219,7 @@ public class AcoesInterfaceUCIII implements ActionListener {
 		        graf_harm5.revalidate();
 		        graf_harm5.repaint();
 		        
-		        //List<Double> listahar6 = harmonico.FormaOnda6(amplitude_harm6, angulo_harm6, ordem6);
+		        List<Double> listahar6 = harmonico.FormaOnda(amplitude_harm6, angulo_harm6, ordem6);
 	             
 				GraphPanel graf_harm6 = new GraphPanel(listahar6);
 				graf_harm6.setBounds(890, 240, 330, 90);
@@ -292,6 +278,26 @@ public class AcoesInterfaceUCIII implements ActionListener {
 				txt_anghar6.setEnabled(false);
 				txt_ordemh6.setEnabled(false);
 				
+				txt_amplharm1.setText("0");
+				txt_anghar1.setText("0");
+				txt_ordemh1.setText("0");
+				txt_amplharm2.setText("0");
+				txt_anghar2.setText("0");
+				txt_ordemh2.setText("0");
+				txt_amplharm3.setText("0");
+				txt_anghar3.setText("0");
+				txt_ordemh3.setText("0");
+				txt_amplharm4.setText("0");
+				txt_anghar4.setText("0");
+				txt_ordemh4.setText("0");
+				txt_amplharm5.setText("0");
+				txt_anghar5.setText("0");
+				txt_ordemh5.setText("0");
+				txt_amplharm6.setText("0");
+				txt_anghar6.setText("0");
+				txt_ordemh6.setText("0");
+				
+				
 		} 
 		 if(select.toString().equals("1")) {
 			txt_amplharm1.setEnabled(true);
@@ -313,6 +319,22 @@ public class AcoesInterfaceUCIII implements ActionListener {
 			txt_anghar6.setEnabled(false);
 			txt_ordemh6.setEnabled(false);
 			
+			txt_amplharm2.setText("0");
+			txt_anghar2.setText("0");
+			txt_ordemh2.setText("0");
+			txt_amplharm3.setText("0");
+			txt_anghar3.setText("0");
+			txt_ordemh3.setText("0");
+			txt_amplharm4.setText("0");
+			txt_anghar4.setText("0");
+			txt_ordemh4.setText("0");
+			txt_amplharm5.setText("0");
+			txt_anghar5.setText("0");
+			txt_ordemh5.setText("0");
+			txt_amplharm6.setText("0");
+			txt_anghar6.setText("0");
+			txt_ordemh6.setText("0");
+		
 			
 		}
 		 if(select.toString().equals("2")) {
@@ -335,6 +357,18 @@ public class AcoesInterfaceUCIII implements ActionListener {
 			txt_anghar6.setEnabled(false);
 			txt_ordemh6.setEnabled(false);
 			
+			txt_amplharm3.setText("0");
+			txt_anghar3.setText("0");
+			txt_ordemh3.setText("0");
+			txt_amplharm4.setText("0");
+			txt_anghar4.setText("0");
+			txt_ordemh4.setText("0");
+			txt_amplharm5.setText("0");
+			txt_anghar5.setText("0");
+			txt_ordemh5.setText("0");
+			txt_amplharm6.setText("0");
+			txt_anghar6.setText("0");
+			txt_ordemh6.setText("0");
 			
 		}
 		 if(select.toString().equals("3")) {
@@ -356,7 +390,17 @@ public class AcoesInterfaceUCIII implements ActionListener {
 			txt_amplharm6.setEnabled(false);
 			txt_anghar6.setEnabled(false);
 			txt_ordemh6.setEnabled(false);
-			
+		
+			txt_amplharm4.setText("0");
+			txt_anghar4.setText("0");
+			txt_ordemh4.setText("0");
+			txt_amplharm5.setText("0");
+			txt_anghar5.setText("0");
+			txt_ordemh5.setText("0");
+			txt_amplharm6.setText("0");
+			txt_anghar6.setText("0");
+			txt_ordemh6.setText("0");
+		
 		}
 		 if(select.toString().equals("4")) {
 			txt_amplharm1.setEnabled(true);
@@ -378,6 +422,12 @@ public class AcoesInterfaceUCIII implements ActionListener {
 			txt_anghar6.setEnabled(false);
 			txt_ordemh6.setEnabled(false);
 			
+			txt_amplharm5.setText("0");
+			txt_anghar5.setText("0");
+			txt_ordemh5.setText("0");
+			txt_amplharm6.setText("0");
+			txt_anghar6.setText("0");
+			txt_ordemh6.setText("0");
 			
 		}
 		 if(select.toString().equals("5")) {
@@ -399,7 +449,11 @@ public class AcoesInterfaceUCIII implements ActionListener {
 			txt_amplharm6.setEnabled(false);
 			txt_anghar6.setEnabled(false);
 			txt_ordemh6.setEnabled(false);
-			
+		
+			txt_amplharm6.setText("0");
+			txt_anghar6.setText("0");
+			txt_ordemh6.setText("0");
+		
 		}
 		if(select.toString().equals("6")) {
 			txt_amplharm1.setEnabled(true);

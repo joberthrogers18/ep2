@@ -3,12 +3,12 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Harmonicos {
-	private List<Double> lista = new ArrayList<>();
+public class Harmonicos{
 	FormaTensao tensao = new FormaTensao();
 	
 	
 	public List<Double> FormaOnda(double amplitude, double angulo, double ordem) {
+		 List<Double> lista = new ArrayList<>();
 		
 		for (float i = 0; i < 100; i = (float) (i + 0.4)) {
 	           
@@ -19,6 +19,7 @@ public class Harmonicos {
 	
 	public List<Double> potenciaInstharm(double amplitude_ten, double angulo_ten,double amplitude_cor, double angulo_cor, double ordem) {
 		List<Double> listacorrete = tensao.formaGrafico(amplitude_ten, angulo_ten);
+		List<Double> lista = new ArrayList<>();
 		int j = 0;
 				
 		for (float i = 0; i < 100; i = (float) (i + 0.4)) {
@@ -76,5 +77,7 @@ public class Harmonicos {
 		return serie;
 		
 	}
+
+	
 
 }
