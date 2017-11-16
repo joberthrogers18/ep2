@@ -11,9 +11,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.sun.corba.se.impl.protocol.ServantCacheLocalCRDBase;
+import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default;
+
 import controler.AcoeInterfaceUCII;;
 
-public class UCII {
+public class UCII  extends JFrame{
 	private JPanel painelUCII;
 	public GraphPanel graf_tensao;
 	private GraphPanel graf_corrente;
@@ -42,7 +45,7 @@ public class UCII {
 	
 	private void criarPainelUCII(JFrame telaInicial) throws IOException {
 		
-	
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		painelUCII = new JPanel();
 		painelUCII.setLayout(null);
 		
@@ -57,11 +60,11 @@ public class UCII {
 		painelUCII.add(input);
 		
 
-		JLabel tensao_l = new JLabel("TENSÂO:");
+		JLabel tensao_l = new JLabel("Tensão:");
 		tensao_l.setBounds(250, 50, 170, 40);
 		painelUCII.add(tensao_l);
 
-		JLabel cor_l = new JLabel("CORRENTE:");
+		JLabel cor_l = new JLabel("Corrente:");
 		cor_l.setBounds(250, 210, 170, 40);
 		painelUCII.add(cor_l);
 		
@@ -69,11 +72,11 @@ public class UCII {
 		output.setBounds(25, 390, 170, 20);
 		painelUCII.add(output);
 		
-/*
-		JLabel cor_l = new JLabel("POTÊNCIA:");
-		cor_l.setBounds(250, 210, 170, 40);
-		painelUCII.add(cor_l);
-		*/
+
+		JLabel l_potinst = new JLabel("Potência instântanea :");
+		l_potinst.setBounds(250, 400, 170, 40);
+		painelUCII.add(l_potinst);
+		
 		txtamplitude_tensao = new JTextField("0");
 		txtamplitude_tensao.setBounds(40, 86, 170, 20);
 		txtamplitude_tensao.setColumns(10);

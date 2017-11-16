@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 
 import controler.AcoesInterfaceUCIV;
 
-public class UCIV {
+public class UCIV extends JFrame{
 	private JPanel painelUCII;
 	public GraphPanel graf_tensao;
 	private GraphPanel graf_corrente;
@@ -41,7 +41,7 @@ public class UCIV {
 	
 	private void criarPainelUCII(JFrame telaInicial) throws IOException {
 		
-	
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		painelUCII = new JPanel();
 		painelUCII.setLayout(null);
 		
@@ -90,6 +90,18 @@ public class UCIV {
 		ok3.setBounds(640, 550, 70, 20);
 		painelUCII.add(ok3);
 		ok3.setActionCommand("ok3");
+		
+		JLabel tensao_l = new JLabel("Tensão:");
+		tensao_l.setBounds(250, 50, 170, 40);
+		painelUCII.add(tensao_l);
+
+		JLabel cor_l = new JLabel("Corrente:");
+		cor_l.setBounds(250, 210, 170, 40);
+		painelUCII.add(cor_l);
+		
+		JLabel l_potinst = new JLabel("Potência instântanea :");
+		l_potinst.setBounds(250, 450, 170, 40);
+		painelUCII.add(l_potinst);
 		
 		graf_tensao = new GraphPanel(v_tensao);
 		graf_tensao.setBounds(20, 90, 600, 120);
@@ -181,13 +193,13 @@ public class UCIV {
 		
 		
 		voltar.addActionListener( new AcoesInterfaceUCIV(painelUCII,telaInicial,txtamplitude_tensao,txtangulo_tensao, graf_tensao,
-				txtamplitude_corrente,txtangulo_corrente, graf_corrente, graf_poten_inst, txtordem_harm,txtpoten_dist));
+				txtamplitude_corrente,txtangulo_corrente, graf_corrente, graf_poten_inst, txtordem_harm,txtpoten_dist,txtTPF));
 		ok.addActionListener(new AcoesInterfaceUCIV(painelUCII,telaInicial,txtamplitude_tensao,txtangulo_tensao, graf_tensao
-				,txtamplitude_corrente,txtangulo_corrente, graf_corrente,graf_poten_inst, txtordem_harm,txtpoten_dist));
+				,txtamplitude_corrente,txtangulo_corrente, graf_corrente,graf_poten_inst, txtordem_harm,txtpoten_dist,txtTPF));
 		ok2.addActionListener(new AcoesInterfaceUCIV(painelUCII,telaInicial,txtamplitude_tensao,txtangulo_tensao
-				, graf_tensao,txtamplitude_corrente,txtangulo_corrente, graf_corrente,graf_poten_inst,txtordem_harm,txtpoten_dist));
+				, graf_tensao,txtamplitude_corrente,txtangulo_corrente, graf_corrente,graf_poten_inst,txtordem_harm,txtpoten_dist,txtTPF));
 		ok3.addActionListener(new AcoesInterfaceUCIV(painelUCII,telaInicial,txtamplitude_tensao,txtangulo_tensao, graf_tensao
-				,txtamplitude_corrente,txtangulo_corrente, graf_corrente,graf_poten_inst,txtordem_harm,txtpoten_dist));
+				,txtamplitude_corrente,txtangulo_corrente, graf_corrente,graf_poten_inst,txtordem_harm,txtpoten_dist,txtTPF));
 		
 		telaInicial.add(painelUCII);
 		painelUCII.setVisible(true);

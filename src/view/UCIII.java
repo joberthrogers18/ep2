@@ -17,7 +17,7 @@ import controler.AcoesInterfaceUCIII;
 
 //import controler.AcoeInterfaceUCII;
 
-public class UCIII {
+public class UCIII extends JFrame{
 	private JPanel painelUCIII;
 	public GraphPanel graf_compfunda;
 	private GraphPanel graf_harmonico1;
@@ -42,6 +42,7 @@ public class UCIII {
 	private void criarPainelUCII(JFrame telaInicial) throws IOException {
 		
 	
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		painelUCIII = new JPanel();
 		painelUCIII.setLayout(null);
 		
@@ -60,11 +61,11 @@ public class UCIII {
 		painelUCIII.add(compo_fundamental);
 		
 		
-		txtamplitude_tensao = new JTextField();
+		txtamplitude_tensao = new JTextField("0");
 		txtamplitude_tensao.setBounds(40, 86, 170, 20);
 		txtamplitude_tensao.setColumns(10);
 		
-		txtangulo_tensao = new JTextField();
+		txtangulo_tensao = new JTextField("0");
 		txtangulo_tensao.setBounds(230, 86, 170, 20);
 		txtangulo_tensao.setColumns(10);
 		
