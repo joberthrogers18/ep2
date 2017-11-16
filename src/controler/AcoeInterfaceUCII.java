@@ -86,16 +86,25 @@ public class AcoeInterfaceUCII  implements ActionListener {
 			
 			 amplitude_ten = Double.parseDouble(txtamplitude_tensao.getText());
              angulo_ten = Double.parseDouble(txtangulo_tensao.getText());
-             List<Double> lista = tensao.formaGrafico(amplitude_ten, angulo_ten);
+             List<Double> lista_ten = tensao.formaGrafico(amplitude_ten, angulo_ten);
              
-			GraphPanel grafico_tensao = new GraphPanel(lista);
-			grafico_tensao.setBounds(20, 90, 600, 120);
-	        
-	        graficotensao.setVisible(false);
-	        painelUCII.add(grafico_tensao);
-	        
-	        grafico_tensao.revalidate();
-	        grafico_tensao.repaint();
+             if(amplitude_ten < 0 || amplitude_ten > 220 || angulo_ten < -180 || angulo_ten > 180){
+            	JOptionPane.showMessageDialog(null, "\t\tTENSÃO\nAngulo ou Amplitude inválida \n\n"
+            		            	+ "           LIMITES:\n 0 > Amplitude > 220 \n -180 > Angulo < 180"); 
+            	 
+             }
+             else {
+             
+				GraphPanel grafico_tensao = new GraphPanel(lista_ten);
+				grafico_tensao.setBounds(20, 90, 600, 120);
+		        
+		        graficotensao.setVisible(false);
+		        painelUCII.add(grafico_tensao);
+		        
+		        grafico_tensao.revalidate();
+		        grafico_tensao.repaint();
+		        
+             }
 						
 		}
 		else if(comando.equals("ok2")) {
@@ -103,18 +112,25 @@ public class AcoeInterfaceUCII  implements ActionListener {
 			
 			 amplitude_cor = Double.parseDouble(txtamplitude_corrente.getText());
              angulo_cor = Double.parseDouble(txtangulo_corrente.getText());
-             List<Double> lista = graf_corrente.formaGrafico(amplitude_cor, angulo_cor);
+             List<Double> lista = new  ArrayList<>();
              
-             
-			GraphPanel grafico_corrente = new GraphPanel(lista);
-			grafico_corrente.setBounds(20, 240, 600, 120);
-	        
-	        graficocorrente.setVisible(false);
-	        painelUCII.add(grafico_corrente);
-	        
-	        grafico_corrente.revalidate();
-	        grafico_corrente.repaint();
-			
+
+             if(amplitude_cor < 0 || amplitude_cor > 220 || angulo_cor < -180 || angulo_cor > 180){
+            	JOptionPane.showMessageDialog(null, "\t\tCORRENTE\nAngulo ou Amplitude inválida \n\n"
+            		            	+ "           LIMITES:\n 0 > Amplitude > 220 \n -180 > Angulo < 180"); 
+            	 
+             }
+             else { 
+             	lista = graf_corrente.formaGrafico(amplitude_cor, angulo_cor);
+				GraphPanel grafico_corrente = new GraphPanel(lista);
+				grafico_corrente.setBounds(20, 240, 600, 120);
+				
+		        graficocorrente.setVisible(false);
+		        painelUCII.add(grafico_corrente);
+		        
+		        grafico_corrente.revalidate();
+		        grafico_corrente.repaint();
+	         }
 			
 		}
 		else if(comando.equals("ok3")) {

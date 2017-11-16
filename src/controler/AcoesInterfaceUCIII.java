@@ -6,8 +6,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sound.midi.Soundbank;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -122,17 +124,24 @@ public class AcoesInterfaceUCIII implements ActionListener {
 				 amplitude_ten = Double.parseDouble(txt_amplfund.getText());
 	            angulo_ten = Double.parseDouble(txt_anglfund.getText());
 	            
-				 List<Double> lista = tensao.formaGrafico(amplitude_ten, angulo_ten);
-	             
-				GraphPanel grafico_tensao = new GraphPanel(lista);
-				grafico_tensao.setBounds(40, 70, 500, 100);
-		        
-				graf_fund.setVisible(false);
-		        painelUCIII.add(grafico_tensao);
-		        
-		        grafico_tensao.revalidate();
-		        grafico_tensao.repaint();
-		        
+	            if(amplitude_ten < 0 || amplitude_ten > 220 || angulo_ten < -180 || angulo_ten > 180){
+	                  JOptionPane.showMessageDialog(null, "\t\tCOMPONENTE FUNDAMENTAL\nAngulo ou Amplitude inválida \n\n"
+	            		            	+ "           LIMITES:\n 0 > Amplitude > 220 \n -180 > Angulo < 180"); 
+	            	 
+	              }
+	              else {
+	            
+						 List<Double> lista = tensao.formaGrafico(amplitude_ten, angulo_ten);
+			             
+						GraphPanel grafico_tensao = new GraphPanel(lista);
+						grafico_tensao.setBounds(40, 70, 500, 100);
+				        
+						graf_fund.setVisible(false);
+				        painelUCIII.add(grafico_tensao);
+				        
+				        grafico_tensao.revalidate();
+				        grafico_tensao.repaint();
+	              }       
 							
 			}
 			else if(comando.equals("ok2")) {
@@ -161,7 +170,21 @@ public class AcoesInterfaceUCIII implements ActionListener {
 				amplitude_harm6 = Double.parseDouble(txt_amplharm6.getText());
 				angulo_harm6 = Double.parseDouble(txt_anghar6.getText());
 				ordem6 = Double.parseDouble(txt_ordemh6.getText());
-	            
+	           
+			if(amplitude_ten < 0 || amplitude_harm1  < 0||  amplitude_harm2 < 0 || amplitude_harm3 < 0 ||amplitude_harm4 < 0 ||
+			   amplitude_harm5 < 0  || amplitude_harm6 < 0 || amplitude_ten > 220 || amplitude_harm1  > 220||  amplitude_harm2 > 220 
+			   || amplitude_harm3 > 220 ||amplitude_harm4 > 220 ||  amplitude_harm5 > 220  || amplitude_harm6 > 220 || angulo_harm1 > -180
+			   || angulo_harm2 < -180 || angulo_harm3 < -180|| angulo_harm4 < -180|| angulo_harm5 < -180|| angulo_harm6 < -180
+			   || angulo_harm1 > 180 || angulo_harm2 > 180|| angulo_harm3 > 180|| angulo_harm4 > 180|| angulo_harm5 > 180|| angulo_harm6 > 180
+			   || ordem1 < 0 || ordem2 < 0 || ordem3 < 0|| ordem4 < 0 || ordem5 < 0 || ordem6 < 0|| ordem1 > 15|| ordem2 > 15
+			   || ordem3 > 15|| ordem4 > 15|| ordem5 > 15|| ordem6 > 15){
+			
+				JOptionPane.showMessageDialog(null, "\t\tHARMONICOS\nAngulo, Amplitude ou Ordem Harmonicas inválida \n\n"
+		            	+ "           LIMITES:\n 0 >= Amplitude <= 220 \n -180 >= Angulo <= 180 \n 0 >= ordem <= 15"); 
+				
+			}
+			else {	
+				
 				List<Double> listahar1 = harmonico.FormaOnda(amplitude_harm1, angulo_harm1, ordem1);
 				
 				List<Double> listahar2 = harmonico.FormaOnda(amplitude_harm2, angulo_harm2, ordem2);
@@ -251,6 +274,8 @@ public class AcoesInterfaceUCIII implements ActionListener {
 		        		amplitude_harm6, angulo_harm6, ordem6);
 		        
 		        serie.setText(serie_f);
+		        
+			  }
 			}
 			
 			JComboBox nume_har = (JComboBox) e.getSource();
