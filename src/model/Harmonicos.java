@@ -78,6 +78,12 @@ public class Harmonicos{
 		
 	}
 
-	
+	public double tPF(double potencial, double potenciad) {
+		double fator;
+		
+		fator = potencial/potenciad;
+		
+		return fator;
+	}
 
 }

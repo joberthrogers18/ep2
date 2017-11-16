@@ -1,13 +1,12 @@
 package model;
 
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Potencias{
-	private FormaTensao tensao;
-	private FormaCorrente corrente;
+	 FormaTensao tensao = new FormaTensao();
+	 FormaCorrente corrente = new FormaCorrente();
 	
 	public List<Double> calculaValor(List<Double> l, List<Double> lval){	  	   	
 		List<Double> lTotalCC = new ArrayList<Double>();
@@ -51,19 +50,28 @@ public class Potencias{
     }
 
 	public  List<Double>  FormaOndaPotenciaIns(double amplitude_tensao, double angulo_tensao,double amplitude_corrente, double angulo_corrente){
+		int j = 0;
 		List<Double> lista = new ArrayList<>();
+		List<Double> lista2 = new ArrayList<>();
+		List<Double> lista3 = new ArrayList<>();
+	
+		lista2  = tensao.formaGrafico(amplitude_tensao, angulo_tensao);
+		lista3 = corrente.formaGrafico(amplitude_corrente, angulo_corrente);
 		
-		for (float i = -100; i < 100; i = (float) (i + 0.4)) {
+		for (float i = 0; i < 100; i = (float) (i + 0.4)) {
 	        
-			lista.add(amplitude_tensao*(Math.cos(120*3.14*i + angulo_tensao)) * amplitude_corrente*(Math.cos(120*3.14*i + angulo_corrente)));
+			lista.add(lista2.get(j) * lista3.get(j));
 			
-			//lista.add(amplitude_tensao*Math.toDegrees(Math.cos(120*3.14*i + angulo_tensao)) + amplitude_corrente*Math.toDegrees(Math.cos(120*3.14*i + angulo_corrente)));
-			//lista.add(amplitude_corrente*Math.toDegrees(Math.cos(120*3.14*i + angulo_corrente)));
+			//lista.add(amplitude_tensao*(Math.cos(120*3.14*i + angulo_tensao)) * amplitude_corrente*(Math.cos(120*3.14*i + angulo_corrente)));
+			
+			j++;
 		}
 		
 		return lista;
 		
 	}
+
+	
 
 	/*public List<Double> formaGrafico(double amplitude_ten, double angulo_ten,double amplitude_cor, double angulo_cor) {
 		List<Double> lista = new ArrayList<>();
