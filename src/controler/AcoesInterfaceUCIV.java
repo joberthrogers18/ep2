@@ -146,7 +146,7 @@ public class AcoesInterfaceUCIV implements ActionListener{
              
  			graficopotinst.setVisible(false); 
 			GraphPanel grafico_potenciainst = new GraphPanel(lista);
-			grafico_potenciainst.setBounds(20, 430, 600, 120);
+			grafico_potenciainst.setBounds(20, 500, 600, 120);
 			painelUCII.add(grafico_potenciainst);
 	       
 	        

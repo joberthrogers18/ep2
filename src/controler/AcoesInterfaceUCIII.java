@@ -171,9 +171,9 @@ public class AcoesInterfaceUCIII implements ActionListener {
 				angulo_harm6 = Double.parseDouble(txt_anghar6.getText());
 				ordem6 = Double.parseDouble(txt_ordemh6.getText());
 	           
-			if(amplitude_ten < 0 || amplitude_harm1  < 0||  amplitude_harm2 < 0 || amplitude_harm3 < 0 ||amplitude_harm4 < 0 ||
-			   amplitude_harm5 < 0  || amplitude_harm6 < 0 || amplitude_ten > 220 || amplitude_harm1  > 220||  amplitude_harm2 > 220 
-			   || amplitude_harm3 > 220 ||amplitude_harm4 > 220 ||  amplitude_harm5 > 220  || amplitude_harm6 > 220 || angulo_harm1 > -180
+			if( amplitude_harm1  < 0||  amplitude_harm2 < 0 || amplitude_harm3 < 0 ||amplitude_harm4 < 0 ||
+			   amplitude_harm5 < 0  || amplitude_harm6 < 0 || amplitude_harm1  > 220||  amplitude_harm2 > 220 
+			   || amplitude_harm3 > 220 ||amplitude_harm4 > 220 ||  amplitude_harm5 > 220  || amplitude_harm6 > 220 || angulo_harm1 < -180
 			   || angulo_harm2 < -180 || angulo_harm3 < -180|| angulo_harm4 < -180|| angulo_harm5 < -180|| angulo_harm6 < -180
 			   || angulo_harm1 > 180 || angulo_harm2 > 180|| angulo_harm3 > 180|| angulo_harm4 > 180|| angulo_harm5 > 180|| angulo_harm6 > 180
 			   || ordem1 < 0 || ordem2 < 0 || ordem3 < 0|| ordem4 < 0 || ordem5 < 0 || ordem6 < 0|| ordem1 > 15|| ordem2 > 15
